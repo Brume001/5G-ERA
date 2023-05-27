@@ -4,8 +4,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const userRouter = require('./routes/users')
+const paymentRouter = require('./routes/payments');
+const investmentRouter = require('./routes/investment');
+const referralRouter = require('./routes/referrals');
 const logger = require('morgan')
-const paymentModel = require('./model/paymentModel')
+const userModel = require('../src/model/userModel')
+
 
 
 
@@ -28,7 +32,10 @@ mongoose
 
 app.use(express.json());
 app.use(logger('dev'));
-app.use('/users', userRouter); 
+app.use('/users', userRouter);
+app.use('/payments', paymentRouter);
+app.use('/investment', investmentRouter);
+app.use('/referrals', referralRouter);
 
 
  
